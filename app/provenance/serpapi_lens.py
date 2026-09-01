@@ -30,6 +30,30 @@ class SerpApiLensProvider(SearchProvider):
         """Return True if SerpAPI API key is configured."""
         return bool(self.api_key and len(self.api_key.strip()) > 0)
 
+    def _get_image_url(self, image_path: Path) -> Optional[str]:
+        """Upload local face crop to a temporary direct host to provide a public URL for SerpAPI."""
+        # Method 1: tmpfiles.org
+        try:
+            with open(image_path, "rb") as f:
+                r = requests.post("https://tmpfiles.org/api/v1/upload", files={"file": f}, timeout=10)
+                if r.status_code == 200:
+                    raw_url = r.json().get("data", {}).get("url", "")
+                    if raw_url:
+                        return raw_url.replace("tmpfiles.org/", "tmpfiles.org/dl/")
+        except Exception:
+            pass
+
+        # Method 2: 0x0.st
+        try:
+            with open(image_path, "rb") as f:
+                r = requests.post("https://0x0.st", files={"file": f}, timeout=10)
+                if r.status_code == 200 and r.text.startswith("http"):
+                    return r.text.strip()
+        except Exception:
+            pass
+
+        return None
+
     def search(self, image_path: Union[str, Path]) -> Dict[str, Any]:
         """Execute live SerpAPI Google Lens reverse image search.
 
@@ -42,22 +66,25 @@ class SerpApiLensProvider(SearchProvider):
         if not self.is_available():
             raise RuntimeError("SerpAPI API key is not configured / unavailable")
 
+        # Obtain public URL for the image
+        img_url = self._get_image_url(p)
+        if not img_url:
+            raise RuntimeError("Failed to obtain public URL for local face crop to query SerpAPI")
+
         endpoint = "https://serpapi.com/search.json"
         params = {
             "engine": "google_lens",
             "api_key": self.api_key,
+            "url": img_url,
             "hl": "en",
         }
 
         try:
-            with open(p, "rb") as f:
-                files = {"image": (p.name, f, "image/jpeg")}
-                response = requests.post(
-                    endpoint,
-                    params=params,
-                    files=files,
-                    timeout=self.timeout_seconds,
-                )
+            response = requests.get(
+                endpoint,
+                params=params,
+                timeout=self.timeout_seconds,
+            )
 
             if response.status_code == 429:
                 raise RuntimeError("HTTP 429: Too Many Requests / Rate Limit Exceeded")
