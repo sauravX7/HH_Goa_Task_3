@@ -66,10 +66,10 @@ class CandidateImageFetcher:
                     return content
                 return None
             else:
-                logger.warning(f"Candidate image fetch failed with status {response.status_code} for {url_clean}")
+                logger.debug(f"Candidate image fetch failed with status {response.status_code} for {url_clean}")
                 return None
         except Exception as e:
-            logger.warning(f"Candidate image fetch error for {url_clean}: {e}")
+            logger.debug(f"Candidate image fetch error for {url_clean}: {e}")
             return None
 
     def fetch_candidate(self, candidate: Union[Dict[str, Any], SearchCandidate]) -> Optional[bytes]:
