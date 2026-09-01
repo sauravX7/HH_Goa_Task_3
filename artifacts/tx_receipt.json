@@ -1,0 +1,31 @@
+{
+  "transactionHash": "0x2063401a7a6ec1c1234d1c4067f602e4713288192c956904606276c9605d6faf",
+  "blockNumber": 101,
+  "blockHash": "0x8d9de53c967652375aa76df2b376b36de120bcb9f1d8f933a01e3358a2041b06",
+  "gasUsed": 85420,
+  "effectiveGasPrice": 1000000000,
+  "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "status": 1,
+  "network": "hardhat_mock",
+  "chainId": 31337,
+  "storedContentHash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+  "decodedEvents": [
+    {
+      "event": "PostRegistered",
+      "blockNumber": 101,
+      "transactionHash": "0x2063401a7a6ec1c1234d1c4067f602e4713288192c956904606276c9605d6faf",
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "args": {
+        "contentHash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+        "sourceUrl": "https://social.example.com/alice/post/100",
+        "provider": "mock_search_provider",
+        "author": "Alice Web3",
+        "postId": "post_1",
+        "postTimestamp": 1788256800,
+        "registrationTimestamp": 1788275291,
+        "registrant": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      }
+    }
+  ]
+}

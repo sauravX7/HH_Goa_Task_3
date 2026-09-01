@@ -1,0 +1,24 @@
+{
+  "name": "hh_goa_task3_face_provenance",
+  "version": "1.0.0",
+  "description": "EVM Blockchain Face Provenance and Verification Pipeline",
+  "main": "hardhat.config.js",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "node": "hardhat node"
+  },
+  "keywords": [
+    "blockchain",
+    "evm",
+    "face-verification",
+    "provenance",
+    "hardhat"
+  ],
+  "author": "Autonomous Agent Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0"
+  }
+}

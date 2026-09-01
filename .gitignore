@@ -1,0 +1,24 @@
+# Virtual Environments
+.venv/
+env/
+venv/
+.agents/
+
+# Node & Hardhat
+node_modules/
+cache/
+artifacts/contracts/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment Variables
+.env
+.env.local
+
+# OS Artifacts
+.DS_Store
+Thumbs.db

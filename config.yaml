@@ -1,0 +1,65 @@
+# Face Provenance & Blockchain Verification Pipeline Configuration
+
+app_name: "FaceProvenancePipeline"
+version: "1.0.0"
+
+# Matching & Thresholds
+matching:
+  similarity_threshold: 0.60
+  distance_threshold: 0.60
+  embedding_dimension: 128  # 128-d (dlib ResNet) or 512-d (InsightFace)
+  face_detector_backend: "face_recognition"  # "face_recognition", "opencv_dnn", "dlib"
+
+# Blockchain Configuration
+blockchain:
+  network: "hardhat"  # Options: hardhat, anvil, polygon_amoy
+  rpc_urls:
+    hardhat: "http://127.0.0.1:8545"
+    anvil: "http://127.0.0.1:8545"
+    polygon_amoy: "https://rpc-amoy.polygon.technology"
+  chain_ids:
+    hardhat: 31337
+    anvil: 31337
+    polygon_amoy: 80002
+  default_account_private_key: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"  # Hardhat account #0 default dev key
+  contract_address: ""
+  gas_limit: 3000000
+
+# Search Provenance Engine Configuration
+search:
+  provider_priority:
+    - "serpapi_lens"
+    - "bing_visual"
+    - "playwright_lens"
+    - "mock"
+  max_candidates: 10
+  timeout_seconds: 15
+  candidate_fetch_timeout_seconds: 10
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+# Directory & Artifacts Paths
+paths:
+  artifacts_dir: "artifacts"
+  demo_dir: "artifacts/demo"
+  face_crop_file: "artifacts/face_crop.jpg"
+  screenshot_file: "artifacts/search_result.png"
+  metadata_file: "artifacts/metadata.json"
+  canonical_post_file: "artifacts/canonical_post.json"
+  sha256_file: "artifacts/sha256.txt"
+  keccak256_file: "artifacts/keccak256.txt"
+  tx_receipt_file: "artifacts/tx_receipt.json"
+  verification_report_file: "artifacts/verification_report.json"
+  pipeline_log_file: "artifacts/pipeline_log.json"
+  contracts_dir: "contracts"
+
+# Demo Recording Mode Settings
+demo:
+  enabled: false
+  step_delay_seconds: 1.5
+  save_step_screenshots: true
+
+# Privacy & Security Policy
+privacy:
+  user_supplied_images_only: true
+  public_sources_only: true
+  store_hashes_only_on_chain: true

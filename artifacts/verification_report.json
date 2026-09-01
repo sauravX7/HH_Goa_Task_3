@@ -1,0 +1,109 @@
+{
+  "baseline_status": "VERIFIED",
+  "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+  "total_scenarios": 5,
+  "detected_tamper_count": 5,
+  "all_tampered_detected": true,
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO_1_MODIFIED_CAPTION",
+      "scenario_name": "Modified post caption/text",
+      "description": "Appended malicious injection to caption field",
+      "attack_vector": "Modified Caption",
+      "status": "TAMPER_DETECTED",
+      "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+      "tampered_hash": "0xfd8e70649fc9cb0a38b2dd21462876174613d958b05019b7f932392946fc3191",
+      "hashes_differ": true,
+      "on_chain_query_result": "MISMATCH",
+      "diffs": [
+        {
+          "field_name": "caption",
+          "original_value": "Verified web3 profile picture and cryptographic badge",
+          "tampered_value": "Verified web3 profile picture and cryptographic badge [TAMPERED_MALICIOUS_INJECTION]",
+          "impact_description": "Field value modified from 'Verified web3 profile picture and cryptographic badge' to 'Verified web3 profile picture and cryptographic badge [TAMPERED_MALICIOUS_INJECTION]'"
+        }
+      ],
+      "detected": true
+    },
+    {
+      "scenario_id": "SCENARIO_2_MODIFIED_TIMESTAMP",
+      "scenario_name": "Modified post timestamp (+3 hours)",
+      "description": "Replaced post timestamp with altered UTC timestamp",
+      "attack_vector": "Modified Timestamp",
+      "status": "TAMPER_DETECTED",
+      "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+      "tampered_hash": "0x304f1e125e9bb5ffc38e5342d08a427869dce31743c8ed16bff67ac709b34d13",
+      "hashes_differ": true,
+      "on_chain_query_result": "MISMATCH",
+      "diffs": [
+        {
+          "field_name": "post_timestamp",
+          "original_value": "2026-09-01T10:00:00Z",
+          "tampered_value": "2026-09-01T15:00:00Z",
+          "impact_description": "Field value modified from '2026-09-01T10:00:00Z' to '2026-09-01T15:00:00Z'"
+        }
+      ],
+      "detected": true
+    },
+    {
+      "scenario_id": "SCENARIO_3_MODIFIED_MEDIA_HASH",
+      "scenario_name": "Modified image/media SHA-256 digest",
+      "description": "Replaced media SHA-256 with invalid cryptographic digest",
+      "attack_vector": "Modified Media Hash",
+      "status": "TAMPER_DETECTED",
+      "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+      "tampered_hash": "0x42d2b58100f323b5754c47ea6fb8da24e4c3c0a009df80e88ba56ff7a9cf3aa2",
+      "hashes_differ": true,
+      "on_chain_query_result": "MISMATCH",
+      "diffs": [
+        {
+          "field_name": "media_sha256",
+          "original_value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tampered_value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "impact_description": "Field value modified from 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' to 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'"
+        }
+      ],
+      "detected": true
+    },
+    {
+      "scenario_id": "SCENARIO_4_REMOVED_FIELD",
+      "scenario_name": "Removed mandatory field 'author'",
+      "description": "Deleted required 'author' key from canonical metadata",
+      "attack_vector": "Removed Metadata Field",
+      "status": "TAMPER_DETECTED",
+      "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+      "tampered_hash": "0xdc0cfd1b0b27d2e155b334143a6e024ff293e19a0ec4a06e621a80a42f04260f",
+      "hashes_differ": true,
+      "on_chain_query_result": "MISMATCH",
+      "diffs": [
+        {
+          "field_name": "author",
+          "original_value": "Alice Web3",
+          "tampered_value": "<MISSING>",
+          "impact_description": "Mandatory canonical field was deleted"
+        }
+      ],
+      "detected": true
+    },
+    {
+      "scenario_id": "SCENARIO_5_ALTERED_SOURCE_URL",
+      "scenario_name": "Altered source URL to fake domain",
+      "description": "Changed provenance source URL to spoofed destination domain",
+      "attack_vector": "Altered Source URL",
+      "status": "TAMPER_DETECTED",
+      "original_hash": "0x6fe69f6291e8adb207f669b16a5bae8f421b89e88821f13b524d8a3256b55561",
+      "tampered_hash": "0xfdf3291c311db8fff7a5c2fd2e1cae1335db93f7e7d252c752607adc05877ed4",
+      "hashes_differ": true,
+      "on_chain_query_result": "MISMATCH",
+      "diffs": [
+        {
+          "field_name": "source_url",
+          "original_value": "https://social.example.com/alice/post/100",
+          "tampered_value": "https://malicious-tampered-site.org/alice/fake_post/789102",
+          "impact_description": "Field value modified from 'https://social.example.com/alice/post/100' to 'https://malicious-tampered-site.org/alice/fake_post/789102'"
+        }
+      ],
+      "detected": true
+    }
+  ]
+}
