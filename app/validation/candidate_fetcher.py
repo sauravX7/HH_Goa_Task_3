@@ -99,12 +99,24 @@ class CandidateImageFetcher:
         self,
         candidates: Sequence[Union[Dict[str, Any], SearchCandidate]],
         timeout: Optional[float] = None,
+        max_workers: int = 6,
     ) -> Dict[int, Optional[bytes]]:
-        """Fetch image bytes for all candidates, indexed by candidate rank."""
+        """Fetch image bytes for all candidates concurrently, indexed by candidate rank."""
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
         results: Dict[int, Optional[bytes]] = {}
-        for cand in candidates:
-            rank = cand.rank if isinstance(cand, SearchCandidate) else cand.get("rank", 1)
-            results[rank] = self.fetch_candidate(cand)
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_cand = {
+                executor.submit(self.fetch_candidate, cand): (cand.rank if isinstance(cand, SearchCandidate) else cand.get("rank", 1))
+                for cand in candidates
+            }
+            for future in as_completed(future_to_cand):
+                rank = future_to_cand[future]
+                try:
+                    results[rank] = future.result()
+                except Exception as e:
+                    logger.debug(f"Candidate rank {rank} fetch failed: {e}")
+                    results[rank] = None
         return results
 
     async def async_fetch_all(

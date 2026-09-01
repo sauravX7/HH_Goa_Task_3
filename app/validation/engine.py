@@ -128,13 +128,18 @@ class MatchValidationEngine:
         """Run complete candidate validation pipeline including image fetch and embedding extraction."""
         embeddings_map: Dict[int, Optional[List[float]]] = {}
 
+        images: Dict[int, Optional[bytes]] = {}
         if candidate_embeddings is not None:
             embeddings_map = candidate_embeddings
         else:
-            # Fetch images if not already provided
-            images = candidate_images or self.fetcher.fetch_all(candidates)
+            # Prioritize top candidates up to max_candidates
+            max_cands = default_config.search.max_candidates
+            eval_candidates = list(candidates[:max_cands]) if len(candidates) > max_cands else list(candidates)
 
-            for cand_item in candidates:
+            # Fetch candidate images in parallel
+            images = candidate_images or self.fetcher.fetch_all(eval_candidates)
+
+            for cand_item in eval_candidates:
                 rank = cand_item.rank if isinstance(cand_item, SearchCandidate) else cand_item.get("rank", 1)
                 img_bytes = images.get(rank)
                 if not img_bytes:
@@ -150,7 +155,7 @@ class MatchValidationEngine:
                     emb = self.face_encoder.encode_face(img_bytes)
                     embeddings_map[rank] = emb
                 except Exception as e:
-                    logger.info(f"Could not extract face embedding for candidate rank {rank}: {e}")
+                    logger.debug(f"Could not extract face embedding for candidate rank {rank}: {e}")
                     embeddings_map[rank] = None
 
         raw_eval = self.evaluate_candidates(query_embedding, candidates, embeddings_map)
@@ -164,8 +169,9 @@ class MatchValidationEngine:
         else:
             status_enum = ValidationStatus.REJECTED
 
-        # Convert selected candidate
+        # Convert selected candidate and compute actual media SHA-256
         selected_model: Optional[ValidatedCandidate] = None
+        winner_media_hash: Optional[str] = None
         sel = raw_eval.get("selected_candidate")
         if sel is not None:
             cand_raw = sel.get("candidate", {})
@@ -181,12 +187,24 @@ class MatchValidationEngine:
                 provider_confidence=cand_raw.get("provider_confidence"),
                 raw_payload=cand_raw.get("raw_payload", {}),
             )
+
+            # Compute SHA-256 of actual downloaded media bytes
+            winner_rank = sel.get("selected_rank", 1)
+            winner_bytes = images.get(winner_rank) if isinstance(images, dict) else None
+            if not winner_bytes:
+                winner_bytes = self.fetcher.fetch_candidate(cand_obj)
+
+            if winner_bytes:
+                import hashlib
+                winner_media_hash = hashlib.sha256(winner_bytes).hexdigest().lower()
+
             selected_model = ValidatedCandidate(
                 selected_rank=sel.get("selected_rank", 1),
                 candidate=cand_obj,
                 similarity_score=sel.get("similarity_score", 0.0),
                 distance_score=sel.get("distance_score", 0.0),
                 candidate_embedding=sel.get("candidate_embedding", []),
+                media_sha256=winner_media_hash,
             )
 
         # Convert rejected logs
@@ -212,4 +230,5 @@ class MatchValidationEngine:
             selected_rank=raw_eval.get("selected_rank"),
             threshold_used=self.similarity_threshold,
             rejected_candidates=rejected_models,
+            media_sha256=winner_media_hash,
         )

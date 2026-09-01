@@ -279,12 +279,16 @@ class PipelineOrchestrator:
             selected_cand = ctx.validation_result.selected_candidate.candidate
             sim_score = ctx.validation_result.similarity_score
             prov_name = ctx.search_provenance.provider_used
+            media_hash = ctx.validation_result.media_sha256 or (
+                ctx.validation_result.selected_candidate.media_sha256 if ctx.validation_result.selected_candidate else None
+            )
 
             canonical_file = ctx.artifacts_dir / "canonical_post.json"
             return self.canonical_builder.build(
                 candidate_or_data=selected_cand,
                 search_provider=prov_name,
                 similarity_score=sim_score,
+                media_sha256=media_hash,
                 output_file=canonical_file,
             )
 

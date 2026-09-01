@@ -115,6 +115,7 @@ class ValidatedCandidate(BaseModel):
     similarity_score: float
     distance_score: float
     candidate_embedding: List[float] = Field(default_factory=list)
+    media_sha256: Optional[str] = None
 
 
 class MatchValidationResult(BaseModel):
@@ -126,6 +127,7 @@ class MatchValidationResult(BaseModel):
     selected_rank: Optional[int] = None
     threshold_used: float = 0.60
     rejected_candidates: List[RejectedCandidateLog] = Field(default_factory=list)
+    media_sha256: Optional[str] = None
 
 
 # -------------------------------------------------------------------------

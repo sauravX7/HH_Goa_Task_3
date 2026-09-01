@@ -1,16 +1,16 @@
 {
-  "pipeline_id": "pipe_20260901_155556_b0894c",
-  "start_time": "2026-09-01T15:55:56.655558Z",
-  "end_time": "2026-09-01T15:57:31.125437Z",
-  "total_duration_seconds": 79.1847,
+  "pipeline_id": "pipe_20260901_160308_1d277c",
+  "start_time": "2026-09-01T16:03:08.438218Z",
+  "end_time": "2026-09-01T16:03:30.600451Z",
+  "total_duration_seconds": 6.8702,
   "status": "SUCCESS",
   "stages": [
     {
       "stage_number": 1,
       "stage_name": "Face Detection & Encoding",
-      "start_time": "2026-09-01T15:55:58.170094Z",
-      "end_time": "2026-09-01T15:55:58.441878Z",
-      "duration_seconds": 0.271784,
+      "start_time": "2026-09-01T16:03:09.951325Z",
+      "end_time": "2026-09-01T16:03:10.219197Z",
+      "duration_seconds": 0.267872,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -20,9 +20,9 @@
     {
       "stage_number": 2,
       "stage_name": "Reverse Search Provenance",
-      "start_time": "2026-09-01T15:55:59.977225Z",
-      "end_time": "2026-09-01T15:56:05.620320Z",
-      "duration_seconds": 5.643095,
+      "start_time": "2026-09-01T16:03:11.746907Z",
+      "end_time": "2026-09-01T16:03:14.386244Z",
+      "duration_seconds": 2.639337,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -32,9 +32,9 @@
     {
       "stage_number": 3,
       "stage_name": "Match Validation Engine",
-      "start_time": "2026-09-01T15:56:07.155186Z",
-      "end_time": "2026-09-01T15:57:14.883782Z",
-      "duration_seconds": 67.728596,
+      "start_time": "2026-09-01T16:03:15.930050Z",
+      "end_time": "2026-09-01T16:03:17.378796Z",
+      "duration_seconds": 1.448746,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -44,9 +44,9 @@
     {
       "stage_number": 4,
       "stage_name": "Evidence Collection",
-      "start_time": "2026-09-01T15:57:16.404408Z",
-      "end_time": "2026-09-01T15:57:21.872638Z",
-      "duration_seconds": 5.46823,
+      "start_time": "2026-09-01T16:03:18.915846Z",
+      "end_time": "2026-09-01T16:03:21.354411Z",
+      "duration_seconds": 2.438565,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -56,9 +56,9 @@
     {
       "stage_number": 5,
       "stage_name": "Canonical Metadata Builder",
-      "start_time": "2026-09-01T15:57:23.389628Z",
-      "end_time": "2026-09-01T15:57:23.391525Z",
-      "duration_seconds": 0.001897,
+      "start_time": "2026-09-01T16:03:22.869723Z",
+      "end_time": "2026-09-01T16:03:22.871067Z",
+      "duration_seconds": 0.001344,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -68,9 +68,9 @@
     {
       "stage_number": 6,
       "stage_name": "Cryptographic Hasher",
-      "start_time": "2026-09-01T15:57:24.922229Z",
-      "end_time": "2026-09-01T15:57:24.923365Z",
-      "duration_seconds": 0.001136,
+      "start_time": "2026-09-01T16:03:24.391337Z",
+      "end_time": "2026-09-01T16:03:24.399335Z",
+      "duration_seconds": 0.007998,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -80,9 +80,9 @@
     {
       "stage_number": 7,
       "stage_name": "Blockchain Registration",
-      "start_time": "2026-09-01T15:57:26.445221Z",
-      "end_time": "2026-09-01T15:57:26.509697Z",
-      "duration_seconds": 0.064476,
+      "start_time": "2026-09-01T16:03:25.928802Z",
+      "end_time": "2026-09-01T16:03:25.991754Z",
+      "duration_seconds": 0.062952,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -92,9 +92,9 @@
     {
       "stage_number": 8,
       "stage_name": "Blockchain Verification",
-      "start_time": "2026-09-01T15:57:28.032763Z",
-      "end_time": "2026-09-01T15:57:28.034175Z",
-      "duration_seconds": 0.001412,
+      "start_time": "2026-09-01T16:03:27.514490Z",
+      "end_time": "2026-09-01T16:03:27.516246Z",
+      "duration_seconds": 0.001756,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -104,9 +104,9 @@
     {
       "stage_number": 9,
       "stage_name": "Tamper Detection Engine",
-      "start_time": "2026-09-01T15:57:29.579776Z",
-      "end_time": "2026-09-01T15:57:29.583862Z",
-      "duration_seconds": 0.004086,
+      "start_time": "2026-09-01T16:03:29.064829Z",
+      "end_time": "2026-09-01T16:03:29.066503Z",
+      "duration_seconds": 0.001674,
       "status": "SUCCESS",
       "details": {
         "attempts": 1
@@ -128,14 +128,14 @@
   "pipeline_log_path": "/Users/ssv/HH_goa_task#3/artifacts/pipeline_log.json",
   "diagnostic_logs": [
     {
-      "timestamp": "2026-09-01T15:55:58.170124Z",
+      "timestamp": "2026-09-01T16:03:09.951351Z",
       "level": "INFO",
       "stage": "Face Detection & Encoding",
       "message": "Starting Stage 1: Face Detection & Encoding",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:55:58.441896Z",
+      "timestamp": "2026-09-01T16:03:10.219214Z",
       "level": "INFO",
       "stage": "Face Detection & Encoding",
       "message": "Completed Stage 1: Face Detection & Encoding successfully",
@@ -144,14 +144,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:55:59.977248Z",
+      "timestamp": "2026-09-01T16:03:11.746943Z",
       "level": "INFO",
       "stage": "Reverse Search Provenance",
       "message": "Starting Stage 2: Reverse Search Provenance",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:56:05.620348Z",
+      "timestamp": "2026-09-01T16:03:14.386270Z",
       "level": "INFO",
       "stage": "Reverse Search Provenance",
       "message": "Completed Stage 2: Reverse Search Provenance successfully",
@@ -160,14 +160,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:56:07.155206Z",
+      "timestamp": "2026-09-01T16:03:15.930067Z",
       "level": "INFO",
       "stage": "Match Validation Engine",
       "message": "Starting Stage 3: Match Validation Engine",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:14.883864Z",
+      "timestamp": "2026-09-01T16:03:17.378809Z",
       "level": "INFO",
       "stage": "Match Validation Engine",
       "message": "Completed Stage 3: Match Validation Engine successfully",
@@ -176,14 +176,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:16.404437Z",
+      "timestamp": "2026-09-01T16:03:18.915866Z",
       "level": "INFO",
       "stage": "Evidence Collection",
       "message": "Starting Stage 4: Evidence Collection",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:21.872681Z",
+      "timestamp": "2026-09-01T16:03:21.354448Z",
       "level": "INFO",
       "stage": "Evidence Collection",
       "message": "Completed Stage 4: Evidence Collection successfully",
@@ -192,14 +192,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:23.389646Z",
+      "timestamp": "2026-09-01T16:03:22.869841Z",
       "level": "INFO",
       "stage": "Canonical Metadata Builder",
       "message": "Starting Stage 5: Canonical Metadata Builder",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:23.391557Z",
+      "timestamp": "2026-09-01T16:03:22.871079Z",
       "level": "INFO",
       "stage": "Canonical Metadata Builder",
       "message": "Completed Stage 5: Canonical Metadata Builder successfully",
@@ -208,14 +208,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:24.922250Z",
+      "timestamp": "2026-09-01T16:03:24.392044Z",
       "level": "INFO",
       "stage": "Cryptographic Hasher",
       "message": "Starting Stage 6: Cryptographic Hasher",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:24.923378Z",
+      "timestamp": "2026-09-01T16:03:24.399413Z",
       "level": "INFO",
       "stage": "Cryptographic Hasher",
       "message": "Completed Stage 6: Cryptographic Hasher successfully",
@@ -224,14 +224,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:26.445238Z",
+      "timestamp": "2026-09-01T16:03:25.928819Z",
       "level": "INFO",
       "stage": "Blockchain Registration",
       "message": "Starting Stage 7: Blockchain Registration",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:26.509708Z",
+      "timestamp": "2026-09-01T16:03:25.991764Z",
       "level": "INFO",
       "stage": "Blockchain Registration",
       "message": "Completed Stage 7: Blockchain Registration successfully",
@@ -240,14 +240,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:28.032788Z",
+      "timestamp": "2026-09-01T16:03:27.514510Z",
       "level": "INFO",
       "stage": "Blockchain Verification",
       "message": "Starting Stage 8: Blockchain Verification",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:28.034201Z",
+      "timestamp": "2026-09-01T16:03:27.516283Z",
       "level": "INFO",
       "stage": "Blockchain Verification",
       "message": "Completed Stage 8: Blockchain Verification successfully",
@@ -256,14 +256,14 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:29.579846Z",
+      "timestamp": "2026-09-01T16:03:29.064849Z",
       "level": "INFO",
       "stage": "Tamper Detection Engine",
       "message": "Starting Stage 9: Tamper Detection Engine",
       "details": {}
     },
     {
-      "timestamp": "2026-09-01T15:57:29.583915Z",
+      "timestamp": "2026-09-01T16:03:29.066535Z",
       "level": "INFO",
       "stage": "Tamper Detection Engine",
       "message": "Completed Stage 9: Tamper Detection Engine successfully",
@@ -272,7 +272,7 @@
       }
     },
     {
-      "timestamp": "2026-09-01T15:57:31.125344Z",
+      "timestamp": "2026-09-01T16:03:30.600338Z",
       "level": "INFO",
       "stage": "Artifact Logger & Summary",
       "message": "Starting Stage 10: Artifact Logger & Summary",

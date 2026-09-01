@@ -1,6 +1,6 @@
 {
   "baseline_status": "VERIFIED",
-  "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
+  "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
   "total_scenarios": 5,
   "detected_tamper_count": 5,
   "all_tampered_detected": true,
@@ -11,16 +11,16 @@
       "description": "Appended malicious injection to caption field",
       "attack_vector": "Modified Caption",
       "status": "TAMPER_DETECTED",
-      "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
-      "tampered_hash": "0x76b6d8842f6a73b2840520cdd2601604a60633ab89190bced1958181c575b15a",
+      "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
+      "tampered_hash": "0x583557ba81e9942027bf94a0ec164c4a8c7bb9a2c72be1e90699151616203ffa",
       "hashes_differ": true,
       "on_chain_query_result": "MISMATCH",
       "diffs": [
         {
           "field_name": "caption",
-          "original_value": "Former President Barack Obama Mentions SHINee In Speech ...",
-          "tampered_value": "Former President Barack Obama Mentions SHINee In Speech ... [TAMPERED_MALICIOUS_INJECTION]",
-          "impact_description": "Field value modified from 'Former President Barack Obama Mentions SHINee In Speech ...' to 'Former President Barack Obama Mentions SHINee In Speech ... [TAMPERED_MALICIOUS_INJECTION]'"
+          "original_value": "Amazon.com: Obama President Barack Obama President of the ...",
+          "tampered_value": "Amazon.com: Obama President Barack Obama President of the ... [TAMPERED_MALICIOUS_INJECTION]",
+          "impact_description": "Field value modified from 'Amazon.com: Obama President Barack Obama President of the ...' to 'Amazon.com: Obama President Barack Obama President of the ... [TAMPERED_MALICIOUS_INJECTION]'"
         }
       ],
       "detected": true
@@ -31,16 +31,16 @@
       "description": "Replaced post timestamp with altered UTC timestamp",
       "attack_vector": "Modified Timestamp",
       "status": "TAMPER_DETECTED",
-      "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
-      "tampered_hash": "0xb82b9616302dfd37edb4698baa4f046d439e8b19ba1536e4c7fedafe49d7b413",
+      "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
+      "tampered_hash": "0xf609feaeb2f99a7ac532205077dfcc2014a7574755151ce6022102b44839b1bf",
       "hashes_differ": true,
       "on_chain_query_result": "MISMATCH",
       "diffs": [
         {
           "field_name": "post_timestamp",
-          "original_value": "2026-09-01T15:57:23Z",
+          "original_value": "2026-09-01T16:03:22Z",
           "tampered_value": "2026-09-01T15:00:00Z",
-          "impact_description": "Field value modified from '2026-09-01T15:57:23Z' to '2026-09-01T15:00:00Z'"
+          "impact_description": "Field value modified from '2026-09-01T16:03:22Z' to '2026-09-01T15:00:00Z'"
         }
       ],
       "detected": true
@@ -51,16 +51,16 @@
       "description": "Replaced media SHA-256 with invalid cryptographic digest",
       "attack_vector": "Modified Media Hash",
       "status": "TAMPER_DETECTED",
-      "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
-      "tampered_hash": "0x577e7aa65b4fa6d9b1146f1a5147708db2f521d1fc79a0d86f463a7c0295248c",
+      "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
+      "tampered_hash": "0x588a257ae331236e623dde1b06132c78a12cddca5f43a86ed90445b2f897a7fa",
       "hashes_differ": true,
       "on_chain_query_result": "MISMATCH",
       "diffs": [
         {
           "field_name": "media_sha256",
-          "original_value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_value": "018b6cca42f476cfc8b2cc3573dca9d5ce2cc9f9e2bc4c6e009202b9d0c54605",
           "tampered_value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-          "impact_description": "Field value modified from 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' to 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'"
+          "impact_description": "Field value modified from '018b6cca42f476cfc8b2cc3573dca9d5ce2cc9f9e2bc4c6e009202b9d0c54605' to 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'"
         }
       ],
       "detected": true
@@ -71,14 +71,14 @@
       "description": "Deleted required 'author' key from canonical metadata",
       "attack_vector": "Removed Metadata Field",
       "status": "TAMPER_DETECTED",
-      "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
-      "tampered_hash": "0x73f6b42bcdea46e52ecc4f7128df9f3ad7c6fcdfb9dd3ba256cf8085145c1c36",
+      "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
+      "tampered_hash": "0x96d299a8013a94a4cb91b8bc66309f856839516d0dfca7e7e9ac10f1d6e81abb",
       "hashes_differ": true,
       "on_chain_query_result": "MISMATCH",
       "diffs": [
         {
           "field_name": "author",
-          "original_value": "hellokpop",
+          "original_value": "Amazon.com",
           "tampered_value": "<MISSING>",
           "impact_description": "Mandatory canonical field was deleted"
         }
@@ -91,16 +91,16 @@
       "description": "Changed provenance source URL to spoofed destination domain",
       "attack_vector": "Altered Source URL",
       "status": "TAMPER_DETECTED",
-      "original_hash": "0xf4224e4b352985e0ea13b1b0d1d6212a982efb58a94a70fd386278d751782d46",
-      "tampered_hash": "0xfc5d7f7d953eb3b78feb7de261a8b8f954ae70cb7d91ee49d82f5717487b6b79",
+      "original_hash": "0x01da74d22b06f77bd04e97bda171e5dedfb48da58742bca9df8c63dc6cb85611",
+      "tampered_hash": "0xd6bc9675ddd743c24d452a18e56d60b5c5295fe51dc464262d82b53a921917b6",
       "hashes_differ": true,
       "on_chain_query_result": "MISMATCH",
       "diffs": [
         {
           "field_name": "source_url",
-          "original_value": "https://www.hellokpop.com/news/former-president-barack-obama-mentions-shinee/",
+          "original_value": "https://www.amazon.com/Obama-President-Barack-United-States/dp/B07L9SMF14",
           "tampered_value": "https://malicious-tampered-site.org/alice/fake_post/789102",
-          "impact_description": "Field value modified from 'https://www.hellokpop.com/news/former-president-barack-obama-mentions-shinee/' to 'https://malicious-tampered-site.org/alice/fake_post/789102'"
+          "impact_description": "Field value modified from 'https://www.amazon.com/Obama-President-Barack-United-States/dp/B07L9SMF14' to 'https://malicious-tampered-site.org/alice/fake_post/789102'"
         }
       ],
       "detected": true
