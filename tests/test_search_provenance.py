@@ -470,6 +470,7 @@ def test_app_serpapi_lens_provider_mock_http(synthetic_face_image_path: Path, mo
 
     import requests
     monkeypatch.setattr(requests, "post", lambda *args, **kwargs: FakeResponse())
+    monkeypatch.setattr(requests, "get", lambda *args, **kwargs: FakeResponse())
 
     provider = SerpApiLensProvider(api_key="test_serp_key")
     assert provider.is_available() is True

@@ -31,7 +31,6 @@ search:
     - "serpapi_lens"
     - "bing_visual"
     - "playwright_lens"
-    - "mock"
   max_candidates: 10
   timeout_seconds: 15
   candidate_fetch_timeout_seconds: 10

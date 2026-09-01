@@ -39,7 +39,7 @@ class SearchProvenanceEngine:
             self.providers = self._build_default_providers()
 
     def _build_default_providers(self) -> List[SearchProvider]:
-        """Instantiate providers in priority order according to configuration."""
+        """Instantiate genuine search providers in priority order according to configuration."""
         provider_map = {
             "serpapi_lens": SerpApiLensProvider,
             "serpapi_google_lens": SerpApiLensProvider,
@@ -47,13 +47,14 @@ class SearchProvenanceEngine:
             "bing_visual_search": BingVisualProvider,
             "playwright_lens": PlaywrightLensProvider,
             "playwright_google_lens": PlaywrightLensProvider,
-            "mock": MockSearchProvider,
-            "mock_search_provider": MockSearchProvider,
         }
 
         instances: List[SearchProvider] = []
         for name in self.config.search.provider_priority:
             norm_name = name.lower().strip()
+            # Ignore test mock providers in production runtime
+            if norm_name in ("mock", "mock_search_provider"):
+                continue
             cls = provider_map.get(norm_name)
             if cls:
                 try:
@@ -62,8 +63,14 @@ class SearchProvenanceEngine:
                     instances.append(cls())
                 except Exception as e:
                     logger.debug(f"Could not instantiate provider {cls}: {e}")
+
         if not instances:
-            instances = [MockSearchProvider()]
+            # Default genuine provider fallback chain: SerpAPI -> Bing -> Playwright
+            instances = [
+                SerpApiLensProvider(timeout_seconds=self.config.search.timeout_seconds),
+                BingVisualProvider(timeout_seconds=self.config.search.timeout_seconds),
+                PlaywrightLensProvider(timeout_seconds=self.config.search.timeout_seconds),
+            ]
         return instances
 
     def execute_search(self, image_path: Union[str, Path]) -> Dict[str, Any]:
